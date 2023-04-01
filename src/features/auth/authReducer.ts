@@ -33,6 +33,6 @@ export function* logoutSaga(){
 export const logout = ()=>({type:'AUTH/LOGOUT'})
 
 export function* authWatcher(){
-    yield takeEvery('AUTH/LOGIN', loginSaga)                                                                         //тут мы должны законнектить воркер сагу с каким-то экшеном
+    yield takeEvery('AUTH/LOGIN', loginSaga)
     yield takeEvery('AUTH/LOGOUT', logoutSaga)
 }

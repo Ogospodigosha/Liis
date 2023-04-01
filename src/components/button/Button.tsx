@@ -4,6 +4,7 @@ import s from './button.module.css'
 type PropsType = {
     title: string
     size: string
+    
 }
 
 export const Button:React.FC<PropsType> = ({title, size}) => {
