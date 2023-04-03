@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     width: 331px;
-    /*justify-content: space-between;*/
 }
 .header {
     color:#424242;
