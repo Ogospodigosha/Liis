@@ -1,0 +1,43 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    background-color: rgba(65, 82, 46, 0.05);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.hotelName {
+    font-family: Roboto, sans-serif;
+    color: #424242;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.41px;
+    margin-left: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.date {
+    font-family: Roboto, sans-serif;
+    color: #878787;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.41px;
+}
+::-webkit-scrollbar {
+    width: 2px; /* ширина для вертикального скролла */
+    background-color: #E7E7E7;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #41522E;
+    border-radius: 2px;
+}
