@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {logout} from "../auth/authReducer";
 import {useAppSelector} from "../../app/store";
 import s from './searchHotel.module.css'
 import { Header } from './header/Header';
+import {Container} from "../../components/container/Container";
+import {Favorites} from "./favorites/Favorites";
+
+import {HotelsDisplay} from "./hotelsDisplay/HotelsDisplay";
+import { SearchHotelForm } from './searchHotelForm/SearchHotelForm';
 
 export const SearchHotel = () => {
     const navigate = useNavigate()
@@ -18,6 +21,23 @@ export const SearchHotel = () => {
     return (
         <div className={s.div}>
             <Header/>
+            <div className={s.container}>
+                <div className={s.flex}>
+                    <div className={s.firstColumn}>
+                        <Container>
+                            <SearchHotelForm/>
+                        </Container>
+                        <Container >
+                            <Favorites/>
+                        </Container>
+                    </div>
+                    <div className={s.searchHotel}>
+                            <Container size={'664px'}>
+                                <HotelsDisplay/>
+                            </Container>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
