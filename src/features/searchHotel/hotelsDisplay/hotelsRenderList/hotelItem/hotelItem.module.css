@@ -1,0 +1,7 @@
+.like {
+    cursor: pointer;
+    /*fill: white;*/
+}
+.like:hover {
+    fill: #C4C4C4
+}

@@ -3,5 +3,5 @@
     padding: 32px;
     border-radius: 16px;
     box-sizing: inherit;
-    overflow: auto;
+    /*overflow: auto;*/
 }

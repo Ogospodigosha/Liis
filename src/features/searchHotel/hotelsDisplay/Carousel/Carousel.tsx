@@ -15,7 +15,7 @@ export const Carousel:React.FC = () => {
     };
 
     return (
-        <div>
+        <div style={{marginBottom: '28px'}}>
             <AliceCarousel items={imageItems}  responsive={responsive}  mouseTracking disableDotsControls disableButtonsControls  />
         </div>
     );
