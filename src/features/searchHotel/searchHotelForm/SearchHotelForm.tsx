@@ -13,11 +13,8 @@ import {useAppSelector} from "../../../app/store";
 export const SearchHotelForm = () => {
     const searchHotelInitValues = {location:'Москва', checkIn: dayjs().format('YYYY-MM-DD'), duration:'1'}
     const location = useAppSelector(state => state.searchHotel.location)
-    console.log('location', location)
     const checkIn = useAppSelector(state => state.searchHotel.checkIn)
-    console.log('checkIn', checkIn)
     const duration = useAppSelector(state => state.searchHotel.duration)
-    console.log('duration', duration)
     const dispatch = useDispatch()
 
 

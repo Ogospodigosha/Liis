@@ -3,7 +3,6 @@ import {call, put, takeEvery} from "redux-saga/effects";
 import {searchAPi} from "../../api/searchApi";
 
 
-
 const initialState = {
     location: 'Москва',
     checkIn: dayjs().format('YYYY-MM-DD'),
@@ -16,7 +15,8 @@ const initialState = {
         './img/carousel4.jpg',
         './img/carousel5.jpg'
     ],
-    favoriteHotels: [] as HotelType[]
+    favoriteHotels: [] as HotelType[],
+
 }
 
 export type HotelType = {
@@ -37,11 +37,7 @@ export const searchHotelReducer = (state: InitialStateType = initialState, actio
             return {...state, location: action.location, checkIn: action.checkIn, duration: action.duration}
         case "searchHotels/SET-HOTELS":
             return  {...state, hotels: action.hotels.map(hot => {
-                if (state.favoriteHotels.some(h => `${h.hotelId}${h.priceFrom}` === `${hot.hotelId}${hot.priceFrom}`)){
-                    hot.like = true
-                }else {
-                    hot.like = false
-                }
+                hot.like = state.favoriteHotels.some(h => `${h.hotelId}${h.priceFrom}` === `${hot.hotelId}${hot.priceFrom}`);
                 return hot
             })}
         case "searchHotels/SET-LIKE-HOTEL":

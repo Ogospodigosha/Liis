@@ -36,7 +36,7 @@ const HotelItem:React.FC<PropsType>= ({el, noImage }) => {
 
     return (
         <div>
-            <div className={s.flex}>
+            <div className={s.flex} style={{ paddingTop:!noImage? '0': '16px' }}>
                 {!noImage ? null :  <div className={s.home} style={{marginRight: '54px'}}>
                     <Home/>
                 </div>}
