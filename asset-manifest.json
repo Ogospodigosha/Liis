@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Liis/static/css/main.6d492bfe.css",
+    "main.js": "/Liis/static/js/main.6e1dcb72.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Liis/static/js/787.28cb0dcd.chunk.js",
+    "static/media/background.jpg": "/Liis/static/media/background.605b82d4c38477b103aa.jpg",
+    "static/media/home.svg": "/Liis/static/media/home.51d05d797890bdb911ffc5d4df8f6dc7.svg",
+    "static/media/like.svg": "/Liis/static/media/like.6d66299388d2eece436a335de8751c87.svg",
+    "index.html": "/Liis/index.html",
+    "static/media/logout.svg": "/Liis/static/media/logout.49cedf58255e2379fff9368e75cf32b4.svg",
+    "static/media/arrowBottom.svg": "/Liis/static/media/arrowBottom.c83a1df787534ed88b8a19f5abeea0fe.svg",
+    "static/media/arrowTop.svg": "/Liis/static/media/arrowTop.8d35305eea5c687a39ffe63274f42c00.svg",
+    "static/media/arrowRight.svg": "/Liis/static/media/arrowRight.ecfc16f7a5f0685dc81942c312c3f763.svg",
+    "main.6d492bfe.css.map": "/Liis/static/css/main.6d492bfe.css.map",
+    "main.6e1dcb72.js.map": "/Liis/static/js/main.6e1dcb72.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Liis/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d492bfe.css",
+    "static/js/main.6e1dcb72.js"
+  ]
+}
