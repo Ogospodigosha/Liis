@@ -41,3 +41,16 @@
     background-color: #41522E;
     border-radius: 2px;
 }
+.forHeight {
+    overflow-y: auto;
+    height: 460px;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+.margin {
+    margin-bottom: 12px;
+}
+
+.width {
+    width: 550px;
+}
