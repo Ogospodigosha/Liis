@@ -1,22 +1,44 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './favorites.module.css'
-import {FavoritesButton} from "../../../components/favoritesButton/FavoritesButton";
 import {useAppSelector} from "../../../app/store";
 import HotelItem from "../hotelsDisplay/hotelsRenderList/hotelItem/HotelItem";
+import { HotelType} from "../SearchHotelReducer";
+import {FavoriteButton} from "../../../components/favoriteButton/FavoriteButton";
+
 export const Favorites = () => {
-    const [active, setActive] = useState(true)
     const favoriteHotels = useAppSelector(state=> state.searchHotel.favoriteHotels)
-    console.log(favoriteHotels)
+    const [sortFavoriteHotels, setSortHotelsFavoriteHotels] = useState<HotelType[]>(favoriteHotels)
+    const [active, setActive] = useState(true)
+    useEffect(() => {
+        setSortHotelsFavoriteHotels(favoriteHotels)
+    }, [favoriteHotels])
+
+    const sortRating = (direction: boolean) => {
+        direction ? setSortHotelsFavoriteHotels([...favoriteHotels].sort((a, b) => b.priceFrom - a.priceFrom)) :
+            setSortHotelsFavoriteHotels([...favoriteHotels].sort((a, b) => a.priceFrom - b.priceFrom))
+    }
+
+    const sortPrice = (direction: boolean) => {
+        direction ? setSortHotelsFavoriteHotels([...favoriteHotels].sort((a, b) => b.priceFrom - a.priceFrom)) :
+            setSortHotelsFavoriteHotels([...favoriteHotels].sort((a, b) => a.priceFrom - b.priceFrom))
+    }
+
+
     return (
         <div>
             <h2 className={s.header}>Избранное</h2>
-            <div style={{display: 'flex', cursor:'pointer', marginBottom: '32px'}}>
-                <FavoritesButton title={'Рейтинг'} active={active} setActive={setActive}/>
-                <FavoritesButton title={'Цена'} active={!active} setActive={setActive} />
+            <div className={s.buttons}>
+                <div className={s.margin}>
+                    <FavoriteButton onClick={sortRating} title={'Рейтинг'} active={true} setActive={setActive}/>
+                </div>
+                <div>
+                    <FavoriteButton onClick={sortPrice} title={'Цена'} active={false} setActive={setActive}/>
+                </div>
+
             </div>
-            <div style={{overflowY: 'auto', height: '130px', overflowX: 'hidden', whiteSpace: 'nowrap'}}>
+            <div className={s.forBlockHeight}>
                 {
-                    favoriteHotels.map((el, index) =>
+                    sortFavoriteHotels.map((el) =>
                         <HotelItem key={el.priceFrom} el={el}/>)
                 }
             </div>

@@ -1,0 +1,21 @@
+.sorter {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #41522e;
+}
+
+.title{
+    font-size: 14px;
+    font-weight: 400;
+    color: #41522e;
+    margin-right: 5px;
+}
+.arrow {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
