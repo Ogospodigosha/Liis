@@ -4,7 +4,7 @@ import {ReactComponent as Home} from "../../../../../svg/home.svg";
 import {ReactComponent as Like} from "../../../../../svg/like.svg";
 import {getDeclination} from "../../../../../utils/getDeclination";
 import {Divider, Rating} from "@mui/material";
-import {useAppSelector} from "../../../../../app/store";
+import { useAppSelector} from "../../../../../app/store";
 import {
     addFavoriteById,
     HotelType,
@@ -16,43 +16,45 @@ import {convertForRuDate} from "../../../../../utils/convertForRuDate";
 import {useDispatch} from "react-redux";
 type PropsType = {
     el: HotelType
+    noImage?: boolean
+
 }
-const HotelItem:React.FC<PropsType>= ({el}) => {
+const HotelItem:React.FC<PropsType>= ({el, noImage }) => {
     const dispatch = useDispatch()
-    const favoriteHotels = useAppSelector(state => state.searchHotel.favoriteHotels)
-    console.log('favoritehotels тут', favoriteHotels)
-    const hotels = useAppSelector(state => state.searchHotel.hotels)
     const duration = useAppSelector(state => state.searchHotel.duration)
     const checkIn = useAppSelector(state => state.searchHotel.checkIn)
-
-    const clickHandler =(hotelId:number)=>{
-    let elem =   hotels.find((el)=>el.hotelId === hotelId)
-        if (elem && elem.like === undefined || elem && elem.like === false) {
-            dispatch(setLikeHotel(hotelId, true))
-            dispatch(addFavoriteById(hotelId))
+    const clickHandler =(el:HotelType,)=>{
+        debugger
+        if (el.like) {
+            dispatch(setLikeHotel(el.hotelId, false))
+            dispatch(removeFavoriteById(el.priceFrom))
         }else {
-            dispatch(setLikeHotel(hotelId, false))
-            dispatch(removeFavoriteById(hotelId))
+            dispatch(setLikeHotel(el.hotelId, true))
+            dispatch(addFavoriteById({...el,duration:duration,like:true,checkIn:convertForRuDate(checkIn) }))
         }
     }
 
     return (
         <div>
             <div className={s.flex}>
-                <div className={s.home} style={{marginRight: '54px'}}>
+                {!noImage ? null :  <div className={s.home} style={{marginRight: '54px'}}>
                     <Home/>
-                </div>
+                </div>}
+
                 <div>
-                    <div style={{display: 'flex', justifyContent: 'space-between', width: '400px'}}>
+                    <div style={{display: 'flex', justifyContent: 'space-between', width: !noImage? '270px':'400px'}}>
                         <div
                             className={s.hotelName}>{el.hotelName.length < 50 ? el.hotelName : el.hotelName.slice(0, 40)}</div>
-                         <Like className={style.like} onClick={()=>clickHandler(el.hotelId)} fill={el.like? 'red':'white'}/>
+                         <Like className={style.like} onClick={()=>clickHandler(el)} fill={el.like? 'red':'white'}/>
 
                     </div>
                     <div style={{display: 'flex', width: '163px', justifyContent: 'space-around'}}>
-                        <div className={s.date}>{convertForRuDate(checkIn)}</div>
+                        {!noImage ? <div className={s.date}>{el.checkIn}</div> :<div className={s.date}>{convertForRuDate(checkIn)}</div>}
                         <div className={s.date}>-</div>
-                        <div className={s.date}> {duration} <span>{getDeclination(duration)}</span></div>
+                        {!noImage ?
+                            <div className={s.date}> {el.duration} <span>{getDeclination(el.duration)}</span></div>
+                            :<div className={s.date}> {duration} <span>{getDeclination(duration)}</span></div>
+                        }
                     </div>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                         <Rating value={el.stars} readOnly={true}/>
