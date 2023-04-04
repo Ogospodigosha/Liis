@@ -16,7 +16,6 @@ export const store = legacy_createStore(rootReducer, applyMiddleware(sagaMiddlew
 export type AppRootState = ReturnType<typeof rootReducer>
 sagaMiddleware.run(rootWatcher)
 function* rootWatcher(){
-    debugger
     yield all([authWatcher(),searchWatcher() ])
 
 }

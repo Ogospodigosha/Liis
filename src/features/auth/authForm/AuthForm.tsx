@@ -15,11 +15,9 @@ export const AuthForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isLoggedIn = useAppSelector(state=>state.auth.isLoggedIn)
-    console.log(isLoggedIn)
 
     useEffect(()=>{
         if (localStorage.getItem('isLoggedIn') === 'true') {
-            console.log(1)
             navigate('/search-hotel')
         }
     },[])
